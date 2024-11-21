@@ -1,29 +1,13 @@
-# JupyterLite Demo
 
-[![lite-badge](https://jupyterlite.rtfd.io/en/latest/_static/badge.svg)](https://jupyterlite.github.io/demo)
+Using [this](https://raw.githubusercontent.com/sonarsushant/California-House-Price-Prediction/refs/heads/master/housing.csv) dataset
 
-JupyterLite deployed as a static site to GitHub Pages, for demo purposes.
 
-## ✨ Try it in your browser ✨
+Visit the notebook at https://gtfierro.github.io/jupyterlite-demo/lab/index.html?fromURL=https://raw.githubusercontent.com/sonarsushant/California-House-Price-Prediction/refs/heads/master/housing.csv
 
-➡️ **https://jupyterlite.github.io/demo**
-
-![github-pages](https://user-images.githubusercontent.com/591645/120649478-18258400-c47d-11eb-80e5-185e52ff2702.gif)
-
-## Requirements
-
-JupyterLite is being tested against modern web browsers:
-
-- Firefox 90+
-- Chromium 89+
-
-## Deploy your JupyterLite website on GitHub Pages
-
-Check out the guide on the JupyterLite documentation: https://jupyterlite.readthedocs.io/en/latest/quickstart/deploy.html
-
-## Further Information and Updates
-
-For more info, keep an eye on the JupyterLite documentation:
-
-- How-to Guides: https://jupyterlite.readthedocs.io/en/latest/howto/index.html
-- Reference: https://jupyterlite.readthedocs.io/en/latest/reference/index.html
+- need to use this `fromURL` trick to load remote data into the notebook
+    - [docs](https://jupyterlite.readthedocs.io/en/stable/howto/content/open-url-parameter.html)
+    - this failed on a ~160MB file but works on the small < 1MB file above
+- if you stick to the usual packages you will probably be fine, but adding additional (or unusual) packages requires some build steps:
+    - https://jupyterlite.readthedocs.io/en/stable/howto/pyodide/packages.html
+    - will need to do this ahead of time -- even though there is a "pip" provided, you will probably want to test the package works by building it into a custom pyodide distribution from the start
+    - I was not able to get seaborn to work, but i'm not sure if this is my fault or if it's a limitation of the current pyodide build
